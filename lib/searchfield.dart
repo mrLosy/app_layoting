@@ -43,7 +43,7 @@ class SearchField extends State<Search> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(left: 15, right: 15, top: 10),
+      margin: const EdgeInsets.only(left: 15, right: 15, bottom: 15),
       child: Column(
         children: <Widget>[
           createSearchView(),
@@ -54,20 +54,22 @@ class SearchField extends State<Search> {
   }
 
   Widget createSearchView() {
-    return Container(
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
-          color: const Color(0xfff5f7fa)),
-      child: TextField(
-        controller: searchView,
-        decoration: InputDecoration(
-          icon: const Icon(Icons.search, color: Colors.black),
-          hintText: "Search plant",
-          hintStyle: TextStyle(color: Colors.grey[300]),
+    return Stack(children: <Widget>[
+      Container(
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12),
+            color: const Color(0xfff5f7fa)),
+        child: TextField(
+          controller: searchView,
+          decoration: InputDecoration(
+            icon: const Icon(Icons.search, color: Colors.black),
+            hintText: "Search plant",
+            hintStyle: TextStyle(color: Colors.grey[300]),
+          ),
+          textAlign: TextAlign.left,
         ),
-        textAlign: TextAlign.left,
       ),
-    );
+    ]);
   }
 
   Widget createView() {

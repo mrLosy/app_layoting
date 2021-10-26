@@ -1,5 +1,8 @@
+import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HeadsCriteria extends StatefulWidget {
   const HeadsCriteria({Key? key}) : super(key: key);
@@ -16,12 +19,11 @@ class _HeadsCriteria extends State<HeadsCriteria> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: const EdgeInsets.only(left: 15, right: 15, top: 10),
         decoration: const BoxDecoration(shape: BoxShape.circle),
         child: ListView.separated(
           itemCount: head.length,
           scrollDirection: Axis.horizontal,
-          padding: const EdgeInsets.all(8),
+          padding: const EdgeInsets.only(left: 5, bottom: 3.1),
           itemBuilder: (BuildContext context, int index) {
             if (index != 0) {
               color = 0xfff5f7fa;
@@ -53,21 +55,15 @@ class _OneHeadCriteria extends State<OneHeadCriteria> {
     final int _colorText = widget._colorText;
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(40),
+        borderRadius: BorderRadius.circular(28),
         color: Color(_color),
       ),
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Text(_title,
-              style: TextStyle(
-                color: Color(_colorText),
-                fontSize: 15,
-              )),
-        ],
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        child: Text(
+          _title,
+          style: GoogleFonts.workSans(color: Color(_colorText), fontSize: 11.9),
+        ),
       ),
     );
   }

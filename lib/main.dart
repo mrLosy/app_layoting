@@ -1,3 +1,7 @@
+import 'dart:ui';
+
+import 'package:google_fonts/google_fonts.dart';
+
 import 'searchfield.dart';
 import 'headcriteria.dart';
 import 'package:flutter/cupertino.dart';
@@ -13,7 +17,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      // title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -62,49 +67,49 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Align(
         alignment: Alignment.topCenter,
-        child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  const SizedBox(
-                    child: Text(
-                      "Discover",
-                      style: TextStyle(
-                        color: Color(0xff24243f),
-                        fontSize: 28.5,
-                        fontFamily: "Work Sans",
-                        fontWeight: FontWeight.w600,
-                      ),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+          Padding(
+            padding:
+                const EdgeInsets.only(left: 22, right: 20, top: 55, bottom: 15),
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(
+                  child: Text(
+                    "Discover",
+                    style: GoogleFonts.workSans(
+                      color: const Color(0xff24243f),
+                      fontSize: 28.5,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
-                  const SizedBox(width: 161.82),
-                  Row(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                        width: 22,
-                        height: 22,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: const Icon(Icons.notifications_none_rounded),
-                      )
-                    ],
-                  )
-                ],
-              ),
-              const SizedBox(height: 100, child: Search()),
-              const SizedBox(
-                  height: 60.0, width: 600.0, child: HeadsCriteria()),
-              const SizedBox(height: 370, width: double.infinity, child: ProductsCards()),
-            ]),
+                ),
+                const SizedBox(width: 157),
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: const [
+                    SizedBox(
+                      width: 22,
+                      height: 22,
+                      // decoration: BoxDecoration(
+                      //   borderRadius: BorderRadius.circular(8),
+                      // ),
+                      child: Icon(Icons.notifications_none_rounded),
+                    )
+                  ],
+                )
+              ],
+            ),
+          ),
+          const SizedBox(height: 63, child: Search()),
+          const SizedBox(height: 32, child: HeadsCriteria()),
+          const SizedBox(
+              height: 467, width: double.infinity, child: ProductsCards()),
+        ]),
       ),
     );
   }
@@ -128,7 +133,7 @@ class _ProductsCards extends State<ProductsCards> {
   List<String> category = ['Indoor', 'Indoor'];
   List<String> description = [
     'The peace lily plant is well known for its air-purifying abilities as a houseplant',
-    ''
+    'Calathea is a species of perennial plant in the family known as the pra...'
   ];
   List<String> price = ['20.000', '22.000'];
   List<String> image = [
@@ -138,7 +143,7 @@ class _ProductsCards extends State<ProductsCards> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(left: 15, right: 15, top: 10),
+      // margin: const EdgeInsets.only(top: 10, bottom: 10),
       decoration: const BoxDecoration(shape: BoxShape.circle),
       child: ListView.separated(
           itemCount: title.length,
@@ -148,7 +153,7 @@ class _ProductsCards extends State<ProductsCards> {
             return Product(title[index], category[index], description[index],
                 price[index], image[index]);
           },
-          separatorBuilder: (context, index) => const SizedBox(width: 100)),
+          separatorBuilder: (context, index) => const SizedBox(width: 50)),
     );
   }
 }
@@ -177,24 +182,133 @@ class _Product extends State<Product> {
     final String _price = widget._price;
     final String _image = widget._image;
     return Container(
-      color: Colors.green,
+      height: 467,
+      width: 252,
+      // color: Colors.green,
       clipBehavior: Clip.none,
+      padding: const EdgeInsets.only(
+        top: 6,
+      ),
       child: Stack(
         clipBehavior: Clip.none,
         children: [
-          Column(
-            children: [
-              Container(
-                clipBehavior: Clip.none,
-                color: const Color(0xffe5e0da),
-                child: Image(
-                  width: 250,
-                  height: 250,
-                  image: AssetImage(_image),
-                  fit: BoxFit.fill,
-                ),
-              ),
-            ],
+          Positioned(
+            top: 39,
+            right: 15,
+            left: 15,
+            child: Container(
+              width: 221,
+              height: 187,
+              clipBehavior: Clip.none,
+              decoration: const BoxDecoration(
+                  color: Color(0xffe5e0da),
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(15),
+                    topRight: Radius.circular(15),
+                  )),
+            ),
+          ),
+          Positioned(
+            top: 6.44,
+            right: 44,
+            left: -14,
+            child: Image(
+              width: 250,
+              height: 250,
+              image: AssetImage(_image),
+              fit: BoxFit.fill,
+            ),
+          ),
+          Positioned(
+            top: 226,
+            right: 15,
+            left: 15,
+            bottom: 15,
+            child: Container(
+              width: 221,
+              height: 245,
+              clipBehavior: Clip.none,
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: const BorderRadius.only(
+                    bottomLeft: Radius.circular(15),
+                    bottomRight: Radius.circular(15),
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.2),
+                      // spreadRadius: 15,
+                      blurRadius: 10,
+                      offset: const Offset(5, 5),
+                    )
+                  ]),
+            ),
+          ),
+          Positioned(
+            top: 244.5,
+            right: 32,
+            left: 32,
+            child: SizedBox(
+              width: 184,
+              height: 56,
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text(
+                          _category,
+                          textAlign: TextAlign.left,
+                          style: GoogleFonts.workSans(
+                              color: const Color(0xff888e9a), fontSize: 14.71),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text(_title,
+                            style: GoogleFonts.workSans(
+                              color: const Color(0xff000000),
+                              fontSize: 23,
+                            ))
+                      ],
+                    ),
+                  ]),
+            ),
+          ),
+          Positioned(
+              top: 310,
+              left: 34,
+              right: 34,
+              child: SizedBox(
+                height: 69,
+                width: 184.5,
+                child: Text(_description,
+                    softWrap: true,
+                    style: GoogleFonts.workSans(
+                      color: const Color(0xff888e9a),
+                      fontSize: 14.7,
+                    )),
+              )),
+          Positioned(
+            top: 394,
+            right: 33.7,
+            left: 33.7,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                const Icon(Icons.favorite_border_sharp),
+                Text(
+                  '\$' + _price,
+                  style: GoogleFonts.workSans(
+                    color: const Color(0xff51b1a6),
+                    fontSize: 14.7,
+                  ),
+                )
+              ],
+            ),
           )
         ],
       ),
