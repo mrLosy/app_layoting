@@ -61,10 +61,11 @@ class SearchField extends State<Search> {
             color: const Color(0xfff5f7fa)),
         child: TextField(
           controller: searchView,
-          decoration: InputDecoration(
-            icon: const Icon(Icons.search, color: Colors.black),
+          decoration: const InputDecoration(
+            icon: Icon(Icons.search_outlined, color: Colors.grey),
             hintText: "Search plant",
-            hintStyle: TextStyle(color: Colors.grey[300]),
+            hintStyle: TextStyle(color: Colors.grey),
+            border: InputBorder.none,
           ),
           textAlign: TextAlign.left,
         ),

@@ -31,7 +31,7 @@ class _HeadsCriteria extends State<HeadsCriteria> {
             }
             return OneHeadCriteria(head[index], color, colorText);
           },
-          separatorBuilder: (context, index) => const SizedBox(width: 10),
+          separatorBuilder: (context, index) => const SizedBox(width: 12),
         ));
   }
 }
@@ -54,16 +54,16 @@ class _OneHeadCriteria extends State<OneHeadCriteria> {
     final int _color = widget._color;
     final int _colorText = widget._colorText;
     return Container(
+      height: 32,
+      alignment: Alignment.center,
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(28),
+        borderRadius: BorderRadius.circular(24),
         color: Color(_color),
       ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-        child: Text(
-          _title,
-          style: GoogleFonts.workSans(color: Color(_colorText), fontSize: 11.9),
-        ),
+      child: Text(
+        _title,
+        style: GoogleFonts.workSans(color: Color(_colorText), fontSize: 13),
       ),
     );
   }
